@@ -1,0 +1,49 @@
+[
+  {
+    "name": "Pizza",
+    "price": 290,
+    "group": "pizza",
+    "rating": 4
+  },
+  {
+    "name": "Burger",
+    "price": 390,
+    "group": "barbique",
+    "rating": 5
+  },
+  {
+    "name": "Doručak",
+    "price": 350,
+    "group": "a la cart",
+    "rating": 4.9
+  },
+  {
+    "name": "Wrap",
+    "price": 390,
+    "group": "wraps",
+    "rating": 4.8
+  },
+  {
+    "name": "Sendvič",
+    "price": 270,
+    "group": "sandwich",
+    "rating": 4.6
+  },
+  {
+    "name": "Salata",
+    "price": 450,
+    "group": "salad",
+    "rating": 4.55
+  },
+  {
+    "name": "Roštilj",
+    "price": 350,
+    "group": "barbique"
+  },
+  {
+    "name": "Pasta",
+    "price": 440,
+    "featured": true,
+    "group": "pastas"
+  }
+]
