@@ -1,14 +1,5 @@
-import Meal from "../models/meal.js";
-const getAllMealsStatic = async (req, res) => {
-  const search = "a";
-  const meals = await Meal.find({
-    name: { $regex: search, $options: "i" },
-  });
-  res.status(200).json({ meals, nbHits: meals.length });
-};
-
 const getAllMeals = async (req, res) => {
-  const { featured, group, name } = req.query;
+  const { featured, group, name, sort, fields, numericFilters } = req.query;
   const queryObject = {};
   if (featured) {
     queryObject.featured = featured === "true" ? true : false;
@@ -19,7 +10,22 @@ const getAllMeals = async (req, res) => {
   if (name) {
     queryObject.name = { $regex: name, $options: "i" };
   }
-  const meals = await Meal.find(queryObject);
+  let result = Meal.find(queryObject);
+  if (sort) {
+    const sortList = sort.split(",").join(" ");
+    result - result.sort(sortList);
+  } else {
+    result = result.sort("createdAt");
+  }
+  if (fields) {
+    const fieldsList = fields.split(",").join(" ");
+    result = result.select(fieldsList);
+  }
+  const page = Nubmer(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 9;
+  const skip = (page - 1) * limit;
+  result = result.skip(skip).limit(limit);
+  const meals = await result;
   res.status(200).json({ meals, nbHits: meals.length });
 };
 
