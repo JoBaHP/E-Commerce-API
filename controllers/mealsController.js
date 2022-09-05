@@ -1,4 +1,5 @@
-import Meal from "../models/meal.js";
+const mongoose = require("mongoose");
+const Meal = require("../models/meal");
 
 const getAllMealsStatic = async (req, res) => {
   const meals = await Meal.find({ price: { $gt: 30 } })
@@ -67,4 +68,4 @@ const getAllMeals = async (req, res) => {
   res.status(200).json({ meals, nbHits: meals.length });
 };
 
-export default { getAllMeals, getAllMealsStatic };
+module.exports = { getAllMeals, getAllMealsStatic };

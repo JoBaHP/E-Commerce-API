@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const mealSchema = new mongoose.Schema({
+const MealSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, "meal name must be provided"],
@@ -38,5 +38,5 @@ const mealSchema = new mongoose.Schema({
     /* enum: ['pizza', 'barbique', 'a la cart'] */
   },
 });
-/* let Meal = mongoose.model('Meal', mealSchema) */
-export default mongoose.model("Meal", mealSchema);
+
+module.exports = mongoose.model("Meal", MealSchema);
