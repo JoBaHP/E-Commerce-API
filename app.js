@@ -7,7 +7,7 @@ const app = express();
 // rest of the packages
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-/* const fileUpload = require('express-fileupload'); */
+const fileUpload = require("express-fileupload");
 const rateLimiter = require("express-rate-limit");
 const helmet = require("helmet");
 const xss = require("xss-clean");
@@ -45,7 +45,7 @@ app.use(express.json());
 app.use(cookieParser(process.env.JWT_SECRET));
 
 app.use(express.static("./public"));
-/* app.use(fileUpload()); */
+app.use(fileUpload());
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
